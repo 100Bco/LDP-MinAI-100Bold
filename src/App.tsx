@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Cpu, Activity, Zap,
   Video, TrendingUp, Radio,
@@ -7,6 +7,19 @@ import {
 } from "lucide-react";
 import { useCreateLead } from "./hooks/use-leads";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+// Disable scroll-triggered animations on mobile to reduce jank
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 // Create a client
 const queryClient = new QueryClient();
@@ -176,13 +189,16 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
 );
 
 function EcosystemSection() {
+  const isMobile = useIsMobile();
   return (
     <section className="py-12 md:py-16 relative z-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          {...(!isMobile && {
+            initial: { opacity: 0, y: 40 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true, margin: "-100px" },
+          })}
           className="text-center mb-6 md:mb-8"
         >
           <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
@@ -198,6 +214,7 @@ function EcosystemSection() {
 }
 
 function BreakdownSection() {
+  const isMobile = useIsMobile();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -218,10 +235,12 @@ function BreakdownSection() {
 
           {/* MinAI Block */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, x: -30 },
+              whileInView: { opacity: 1, x: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.8 },
+            })}
             className="group bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-5 md:p-8 relative overflow-hidden transition-all duration-500 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5"
           >
             {/* Visual background */}
@@ -235,13 +254,13 @@ function BreakdownSection() {
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">MINAI</h2>
               <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-6">Done-For-You AI Systems That Close Deals</p>
 
-              <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-4 md:space-y-6">
+              <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
                 {[
                   { icon: Activity, title: "CAPTURE", desc: "Missed call text-back & instant lead engagement." },
                   { icon: Zap, title: "FOLLOW UP", desc: "Automated nurture sequences that run while you sleep." },
                   { icon: TrendingUp, title: "REPLACE", desc: "One platform replaces ~$900/mo of disconnected tools." }
                 ].map((item, i) => (
-                  <motion.div key={i} variants={itemVariants} className="flex gap-3 md:gap-4 items-start">
+                  <motion.div key={i} {...(!isMobile && { variants: itemVariants })} className="flex gap-3 md:gap-4 items-start">
                     <div className="mt-0.5 bg-blue-50 p-1.5 md:p-2 rounded-lg border border-blue-100 shrink-0">
                       <item.icon className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
                     </div>
@@ -257,10 +276,12 @@ function BreakdownSection() {
 
           {/* 100BOLD Block */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, x: 30 },
+              whileInView: { opacity: 1, x: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.8 },
+            })}
             className="group bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-5 md:p-8 relative overflow-hidden transition-all duration-500 hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5"
           >
             {/* Visual background */}
@@ -275,13 +296,13 @@ function BreakdownSection() {
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">100BOLD</h2>
               <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-6">Start Brave. Stay Bold.</p>
 
-              <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="space-y-4 md:space-y-6">
+              <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
                 {[
                   { icon: CheckCircle2, title: "BRAND", desc: "Visual identity & positioning for category leaders." },
                   { icon: Play, title: "CONTENT", desc: "High-volume short-form video systems." },
                   { icon: Radio, title: "DOMINATE", desc: "Paid distribution to own your market share." }
                 ].map((item, i) => (
-                  <motion.div key={i} variants={itemVariants} className="flex gap-3 md:gap-4 items-start">
+                  <motion.div key={i} {...(!isMobile && { variants: itemVariants })} className="flex gap-3 md:gap-4 items-start">
                     <div className="mt-0.5 bg-red-50 p-1.5 md:p-2 rounded-lg border border-red-100 shrink-0">
                       <item.icon className="w-4 h-4 md:w-5 md:h-5 text-red-600" />
                     </div>
@@ -302,6 +323,7 @@ function BreakdownSection() {
 }
 
 function FiguresSection() {
+  const isMobile = useIsMobile();
   return (
     <section className="py-12 md:py-16 relative z-20 border-y border-slate-100 bg-slate-50/50">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
@@ -309,10 +331,12 @@ function FiguresSection() {
 
           {/* MinAI Stat 1 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.5 },
+            })}
             className="text-center px-2 md:px-4"
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-blue-600 mb-2">50+</h4>
@@ -322,10 +346,12 @@ function FiguresSection() {
 
           {/* MinAI Stat 2 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.5, delay: 0.1 },
+            })}
             className="text-center px-2 md:px-4"
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-blue-600 mb-2">10+</h4>
@@ -335,10 +361,12 @@ function FiguresSection() {
 
           {/* 100Bold Stat 1 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.5, delay: 0.2 },
+            })}
             className="text-center px-2 md:px-4"
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">25+</h4>
@@ -348,10 +376,12 @@ function FiguresSection() {
 
           {/* 100Bold Stat 2 */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            {...(!isMobile && {
+              initial: { opacity: 0, y: 20 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.5, delay: 0.3 },
+            })}
             className="text-center px-2 md:px-4"
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">8-9</h4>
@@ -366,13 +396,16 @@ function FiguresSection() {
 }
 
 function VideoShowcaseSection() {
+  const isMobile = useIsMobile();
   return (
     <section className="py-12 md:py-16 relative z-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...(!isMobile && {
+            initial: { opacity: 0, y: 20 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
           className="text-center mb-8 md:mb-12"
         >
           <h2 className="text-2xl md:text-4xl font-display font-bold mb-2 md:mb-3 text-slate-900">See The Engines At Work</h2>
@@ -391,9 +424,11 @@ function VideoShowcaseSection() {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              {...(!isMobile && {
+                initial: { opacity: 0, y: 20 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+              })}
               className="group relative aspect-video bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10"
             >
               <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite]" />
@@ -427,10 +462,12 @@ function VideoShowcaseSection() {
               {[1, 2, 3].map((i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                  {...(!isMobile && {
+                    initial: { opacity: 0, y: 20 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { delay: i * 0.1 },
+                  })}
                   className="group relative aspect-[9/16] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 hover:border-red-300 hover:shadow-xl hover:shadow-red-500/10"
                 >
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite_reverse]" />
@@ -470,6 +507,7 @@ function FlameIcon(props: any) {
 
 
 function CtaSection() {
+  const isMobile = useIsMobile();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const createLead = useCreateLead();
@@ -495,9 +533,11 @@ function CtaSection() {
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...(!isMobile && {
+            initial: { opacity: 0, y: 30 },
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once: true },
+          })}
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-2 md:mb-3 text-slate-900">Choose Your Engine.</h2>
           <p className="text-lg md:text-xl text-slate-500 mb-8 md:mb-8 font-light">Or combine both.</p>
