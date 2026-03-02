@@ -97,7 +97,7 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
         </div>
 
         {/* --- Spacer: logos → customers --- */}
-        <div className="h-8 md:h-14" />
+        <div className="h-10 md:h-14" />
 
         {/* --- Layer 2: Social Proof --- */}
         <motion.div
@@ -131,8 +131,8 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
           </div>
         </motion.div>
 
-        {/* --- Spacer: customers → hero title (most air — the star) --- */}
-        <div className="flex-1 min-h-16 md:min-h-24" />
+        {/* --- Spacer: customers → hero title --- */}
+        <div className="h-14 md:h-20" />
 
         {/* --- Layer 3: Hero Message (the star) --- */}
         <motion.div
@@ -169,7 +169,7 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
         </motion.div>
 
         {/* --- Bottom breathing room --- */}
-        <div className="h-8 md:h-12" />
+        <div className="h-10 md:h-14" />
       </motion.section>
     );
   }
