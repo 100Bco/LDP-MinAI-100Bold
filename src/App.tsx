@@ -11,9 +11,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Disable scroll-triggered animations on mobile to reduce jank
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(
-    () => window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
+    () => typeof window !== 'undefined' && window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
   );
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mql.addEventListener("change", handler);
@@ -214,6 +215,9 @@ function EcosystemSection() {
   );
 }
 
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (START) =================================
+// ========================================================================
 function BreakdownSection() {
   const isMobile = useIsMobile();
   const containerVariants = {
@@ -234,7 +238,7 @@ function BreakdownSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
-          {/* MinAI Block */}
+          {/* --- MinAI Block --- */}
           <motion.div
             {...(!isMobile && {
               initial: { opacity: 0, x: -30 },
@@ -244,16 +248,32 @@ function BreakdownSection() {
             })}
             className="group bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-5 md:p-8 relative overflow-hidden transition-all duration-500 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5"
           >
-            {/* Visual background */}
+            {/* Visual background pattern */}
             <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CgkJPHBhdGggZD0iTTAgMGwyMCAyME0yMCAwbC0yMCAyMCIgc3Ryb2tlPSIjMjU2M0VCIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-50 flex items-center justify-center mb-4 md:mb-6 border border-blue-100 group-hover:scale-110 transition-transform duration-500">
-                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+              {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
+              <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
+                {/* Icon to hơn, bỏ viền, bỏ nền */}
+                <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
+                  <img 
+                    src="/images/Icon%201.png" 
+                    alt="MinAI Icon" 
+                    // Tăng size lên w-14/h-14 (mobile) và w-20/h-20 (desktop)
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  />
+                </div>
+                
+                {/* Title nằm bên cạnh */}
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                  MINAI
+                </h2>
               </div>
+              {/* --- END NEW HEADER --- */}
 
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">MINAI</h2>
-              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-6">Done-For-You AI Systems That Close Deals</p>
+              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8 border-l-2 border-blue-200 pl-4">
+                Done-For-You AI Systems That Close Deals
+              </p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
                 {[
@@ -275,7 +295,7 @@ function BreakdownSection() {
             </div>
           </motion.div>
 
-          {/* 100BOLD Block */}
+          {/* --- 100BOLD Block --- */}
           <motion.div
             {...(!isMobile && {
               initial: { opacity: 0, x: 30 },
@@ -290,12 +310,28 @@ function BreakdownSection() {
             <div className="absolute right-0 top-0 w-64 h-64 bg-red-600/5 blur-[80px] pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-red-50 flex items-center justify-center mb-4 md:mb-6 border border-red-100 group-hover:scale-110 transition-transform duration-500">
-                <img src="/images/Icon 2.png" alt="100Bold Icon" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+               {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
+               <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
+                {/* Icon to hơn, bỏ viền, bỏ nền */}
+                <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
+                  <img 
+                    src="/images/Icon%202.png" 
+                    alt="100Bold Icon" 
+                    // Tăng size tương tự bên kia
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  />
+                </div>
+                
+                {/* Title nằm bên cạnh */}
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                  100BOLD
+                </h2>
               </div>
+              {/* --- END NEW HEADER --- */}
 
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">100BOLD</h2>
-              <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-6">Start Brave. Stay Bold.</p>
+              <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-8 border-l-2 border-red-200 pl-4">
+                Start Brave. Stay Bold.
+              </p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
                 {[
@@ -322,6 +358,10 @@ function BreakdownSection() {
     </section>
   );
 }
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (END) ===================================
+// ========================================================================
+
 
 function FiguresSection() {
   const isMobile = useIsMobile();
