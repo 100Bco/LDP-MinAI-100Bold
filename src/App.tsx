@@ -108,7 +108,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-12 w-auto max-w-[140px] object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default"
+                  className="h-12 w-auto max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 cursor-default"
                 />
               </div>
             ))}
@@ -124,7 +124,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-12 w-auto max-w-[140px] object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-default"
+                  className="h-12 w-auto max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 cursor-default"
                 />
               </div>
             ))}
