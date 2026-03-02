@@ -131,8 +131,8 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
           </div>
         </motion.div>
 
-        {/* --- Spacer: customers → hero title (most air — the star) --- */}
-        <div className="flex-1 min-h-16 md:min-h-24" />
+        {/* --- Spacer: customers → hero title --- */}
+        <div className="h-10 md:h-16" />
 
         {/* --- Layer 3: Hero Message (the star) --- */}
         <motion.div
