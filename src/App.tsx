@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Cpu, Activity, Zap,
   Video, TrendingUp, Radio,
@@ -20,9 +20,13 @@ export default function App() {
 }
 
 function Home() {
-  const { scrollYProgress } = useScroll();
-  const yHero = useTransform(scrollYProgress, [0, 1], [0, 300]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const yHero = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacityHero = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-100 overflow-hidden font-sans">
@@ -36,7 +40,7 @@ function Home() {
       </div>
 
       <main className="relative z-10">
-        <HeroSection y={yHero} opacity={opacityHero} />
+        <HeroSection ref={heroRef} y={yHero} opacity={opacityHero} />
         <EcosystemSection />
         <BreakdownSection />
         <FiguresSection />
@@ -49,121 +53,127 @@ function Home() {
 
 // --- Sections ---
 
-function HeroSection({ y, opacity }: { y: any, opacity: any }) {
-  const customerLogos = [
-    { src: "/images/customer-dacy.jpg", alt: "Dacy Business Park" },
-    { src: "/images/customer-lt-commercial.png", alt: "LT Commercial Group" },
-    { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
-    { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
-    { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
-    { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
-    { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
-  ];
+const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
+  function HeroSection({ y, opacity }, ref) {
+    const customerLogos = [
+      { src: "/images/customer-dacy.jpg", alt: "Dacy Business Park" },
+      { src: "/images/customer-lt-commercial.png", alt: "LT Commercial Group" },
+      { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
+      { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
+      { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
+      { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
+      { src: "/images/customer-miami-vice.png", alt: "Miami Vice" },
+    ];
 
-  return (
-    <motion.section
-      style={{ y, opacity }}
-      className="relative flex flex-col items-center justify-center min-h-screen px-4 lg:px-12 py-12 md:py-16"
-    >
-      {/* --- Layer 1: Partner Logos --- */}
-      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between relative z-20">
+    return (
+      <motion.section
+        ref={ref}
+        style={{ y, opacity, willChange: "transform" }}
+        className="relative flex flex-col items-center justify-center min-h-screen px-4 lg:px-12 pt-16 pb-12 md:pt-20 md:pb-16"
+      >
+        {/* --- Layer 1: Partner Logos --- */}
+        <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between relative z-20">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center justify-center"
+          >
+            <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10 flex items-center justify-center">
+              <img src="/images/minai-logo.png" alt="MinAI" className="h-10 md:h-14 w-auto object-contain" />
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex items-center justify-center"
+          >
+            <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10 flex items-center justify-center">
+              <img src="/images/100bold-logo.png" alt="100Bold" className="h-10 md:h-14 w-auto object-contain" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* --- Spacer: logos → customers --- */}
+        <div className="h-8 md:h-14" />
+
+        {/* --- Layer 2: Social Proof --- */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex items-center justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="w-full max-w-7xl mx-auto relative z-20 overflow-hidden"
         >
-          <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10 flex items-center justify-center">
-            <img src="/images/minai-logo.png" alt="MinAI" className="h-10 md:h-14 w-auto object-contain" />
+          <div className="flex justify-center mb-4 md:mb-5">
+            <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
+              Our Customers
+            </span>
+          </div>
+
+          <div className="relative w-full overflow-hidden mask-image-gradient">
+            <div className="flex w-max animate-marquee items-center">
+              {customerLogos.map((logo, i) => (
+                <div key={i} className="flex items-center justify-center mx-10 md:mx-16 shrink-0">
+                  <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
+                </div>
+              ))}
+              {customerLogos.map((logo, i) => (
+                <div key={`dup-${i}`} className="flex items-center justify-center mx-10 md:mx-16 shrink-0">
+                  <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
+                </div>
+              ))}
+            </div>
+
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
           </div>
         </motion.div>
 
+        {/* --- Spacer: customers → hero title (most air — the star) --- */}
+        <div className="flex-1 min-h-16 md:min-h-24" />
+
+        {/* --- Layer 3: Hero Message (the star) --- */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex items-center justify-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="text-center max-w-5xl mx-auto relative z-20"
         >
-          <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10 flex items-center justify-center">
-            <img src="/images/100bold-logo.png" alt="100Bold" className="h-10 md:h-14 w-auto object-contain" />
-          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-5 md:mb-6">
+            <span className="block text-slate-900">INFRASTRUCTURE</span>
+
+            <div className="relative w-full h-[2px] my-3 md:my-4 bg-slate-100/50 overflow-hidden">
+              <motion.div
+                initial={{ x: "-100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 left-0 w-1/3 md:w-1/4 bg-gradient-to-r from-transparent to-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+              />
+              <motion.div
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{ x: "0%", opacity: [0, 1, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 bottom-0 right-0 w-1/3 md:w-1/4 bg-gradient-to-l from-transparent to-red-600 shadow-[0_0_15px_rgba(204,0,0,0.5)]"
+              />
+            </div>
+
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-slate-500">
+              FOR GROWTH
+            </span>
+          </h1>
+          <p className="text-base md:text-lg text-slate-400 font-light max-w-2xl mx-auto px-4">
+            AI Automation Systems <span className="text-blue-600/80">×</span> Brand & Content Growth
+          </p>
         </motion.div>
-      </div>
 
-      {/* --- Spacer: logos → customers --- */}
-      <div className="h-6 md:h-12" />
-
-      {/* --- Layer 2: Social Proof --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="w-full max-w-7xl mx-auto relative z-20 overflow-hidden"
-      >
-        <div className="flex justify-center mb-3 md:mb-4">
-          <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
-            Our Customers
-          </span>
-        </div>
-
-        <div className="relative w-full overflow-hidden mask-image-gradient">
-          <div className="flex w-max animate-marquee items-center">
-            {customerLogos.map((logo, i) => (
-              <div key={i} className="flex items-center justify-center mx-8 md:mx-12 shrink-0">
-                <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
-              </div>
-            ))}
-            {customerLogos.map((logo, i) => (
-              <div key={`dup-${i}`} className="flex items-center justify-center mx-8 md:mx-12 shrink-0">
-                <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-        </div>
-      </motion.div>
-
-      {/* --- Spacer: customers → hero title --- */}
-      <div className="h-10 md:h-20" />
-
-      {/* --- Layer 3: Hero Message (the star) --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.4 }}
-        className="text-center max-w-5xl mx-auto relative z-20"
-      >
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-4 md:mb-5">
-          <span className="block text-slate-900">INFRASTRUCTURE</span>
-
-          <div className="relative w-full h-[2px] my-2 md:my-3 bg-slate-100/50 overflow-hidden">
-            <motion.div
-              initial={{ left: "0%", opacity: 0 }}
-              animate={{ left: "45%", opacity: [0, 1, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 bottom-0 w-1/3 md:w-1/4 bg-gradient-to-r from-transparent to-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-            />
-            <motion.div
-              initial={{ right: "0%", opacity: 0 }}
-              animate={{ right: "45%", opacity: [0, 1, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 bottom-0 w-1/3 md:w-1/4 bg-gradient-to-l from-transparent to-red-600 shadow-[0_0_15px_rgba(204,0,0,0.5)]"
-            />
-          </div>
-
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-800 to-slate-500">
-            FOR GROWTH
-          </span>
-        </h1>
-        <p className="text-sm md:text-lg text-slate-400 font-light max-w-2xl mx-auto px-4">
-          AI Automation Systems <span className="text-blue-600/80">×</span> Brand & Content Growth
-        </p>
-      </motion.div>
-    </motion.section>
-  );
-}
+        {/* --- Bottom breathing room --- */}
+        <div className="h-8 md:h-12" />
+      </motion.section>
+    );
+  }
+);
 
 function EcosystemSection() {
   return (
