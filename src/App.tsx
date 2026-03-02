@@ -63,7 +63,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
   return (
     <motion.section
       style={{ y, opacity }}
-      className="relative flex flex-col items-center justify-center pt-8 pb-6 md:pt-12 md:pb-10 px-4 lg:px-12"
+      className="relative flex flex-col items-center justify-center min-h-screen px-4 lg:px-12 py-12 md:py-16"
     >
       {/* --- Layer 1: Partner Logos --- */}
       <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between relative z-20">
@@ -90,8 +90,8 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
         </motion.div>
       </div>
 
-      {/* --- Spacer: logos → customers (32/48px) --- */}
-      <div className="h-8 md:h-12" />
+      {/* --- Spacer: logos → customers --- */}
+      <div className="h-6 md:h-12" />
 
       {/* --- Layer 2: Social Proof --- */}
       <motion.div
@@ -125,8 +125,8 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
         </div>
       </motion.div>
 
-      {/* --- Spacer: customers → hero title (64/80px) — the hero moment needs the most air --- */}
-      <div className="h-16 md:h-20" />
+      {/* --- Spacer: customers → hero title --- */}
+      <div className="h-10 md:h-20" />
 
       {/* --- Layer 3: Hero Message (the star) --- */}
       <motion.div
@@ -175,7 +175,7 @@ function EcosystemSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-6 md:mb-8"
         >
-          <div className="inline-flex items-center justify-center px-3 py-1 mb-4 md:mb-4 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
+          <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
             The Core Concept
           </div>
           <h2 className="text-2xl md:text-4xl font-display font-bold text-slate-900">
