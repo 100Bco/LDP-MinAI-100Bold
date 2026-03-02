@@ -215,9 +215,6 @@ function EcosystemSection() {
   );
 }
 
-// ========================================================================
-// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (START) =================================
-// ========================================================================
 function BreakdownSection() {
   const isMobile = useIsMobile();
   const containerVariants = {
@@ -259,7 +256,6 @@ function BreakdownSection() {
                   <img 
                     src="/images/Icon%201.png" 
                     alt="MinAI Icon" 
-                    // Tăng size lên w-14/h-14 (mobile) và w-20/h-20 (desktop)
                     className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
                   />
                 </div>
@@ -270,9 +266,10 @@ function BreakdownSection() {
                 </h2>
               </div>
               {/* --- END NEW HEADER --- */}
-
-              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8 border-l-2 border-blue-200 pl-4">
-                The machine automates your business.
+              
+              {/* === CHANGE #1: Bỏ border và padding, thay đổi slogan === */}
+              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8">
+                Your 24/7 Growth Engine.
               </p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
@@ -317,7 +314,6 @@ function BreakdownSection() {
                   <img 
                     src="/images/Icon%202.png" 
                     alt="100Bold Icon" 
-                    // Tăng size tương tự bên kia
                     className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
                   />
                 </div>
@@ -328,8 +324,9 @@ function BreakdownSection() {
                 </h2>
               </div>
               {/* --- END NEW HEADER --- */}
-
-              <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-8 border-l-2 border-red-200 pl-4">
+              
+              {/* === CHANGE #2: Bỏ border và padding === */}
+              <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-8">
                 Start Brave. Stay Bold.
               </p>
 
@@ -358,9 +355,6 @@ function BreakdownSection() {
     </section>
   );
 }
-// ========================================================================
-// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (END) ===================================
-// ========================================================================
 
 
 function FiguresSection() {
@@ -459,7 +453,7 @@ function VideoShowcaseSection() {
           <div>
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
               <div className="p-1.5 md:p-2 bg-blue-50 rounded-lg border border-blue-100">
-                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                <img src="/images/Icon%201.png" alt="MinAI Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
               </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">MinAI System Demo</h3>
             </div>
@@ -485,7 +479,7 @@ function VideoShowcaseSection() {
               </div>
 
               <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-lg border border-slate-200 text-sm font-semibold tracking-wider flex items-center gap-2 text-blue-600 shadow-sm">
-                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-4 h-4 object-contain" /> System Walkthrough
+                <img src="/images/Icon%201.png" alt="MinAI Icon" className="w-4 h-4 object-contain" /> System Walkthrough
               </div>
             </motion.div>
           </div>
@@ -494,7 +488,7 @@ function VideoShowcaseSection() {
           <div>
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
               <div className="p-1.5 md:p-2 bg-red-50 rounded-lg border border-red-100">
-                <img src="/images/Icon 2.png" alt="100Bold Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                <img src="/images/Icon%202.png" alt="100Bold Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
               </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">100Bold Content Examples</h3>
             </div>
