@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
-import { Bot, MessageSquare, TrendingUp, Clock, ArrowRight, Play } from 'lucide-react';
+// Đã loại bỏ "Bot" khỏi import vì không còn dùng
+import { MessageSquare, TrendingUp, Clock, ArrowRight, Play } from 'lucide-react';
 
 export default function MinAISection() {
   return (
@@ -19,7 +20,12 @@ export default function MinAISection() {
           className="max-w-4xl mx-auto text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-6 shadow-sm">
-            <Bot className="w-4 h-4 text-minai-blue" />
+            {/* --- THAY ĐỔI Ở ĐÂY: Dùng thẻ img thay cho icon Bot --- */}
+            <img 
+              src="/images/Icon 1.png" 
+              alt="MinAI Engine" 
+              className="w-5 h-5 object-contain"
+            />
             <span className="text-minai-blue text-sm font-medium tracking-wide uppercase">The Engine</span>
           </div>
           
