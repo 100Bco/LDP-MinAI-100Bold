@@ -164,7 +164,7 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
             </span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 font-light max-w-2xl mx-auto px-4">
-            Automation Systems <span className="text-blue-600/80">×</span> Brand Growth
+            Automation System <span className="text-blue-600/80">×</span> Branding Solution
           </p>
         </motion.div>
 
