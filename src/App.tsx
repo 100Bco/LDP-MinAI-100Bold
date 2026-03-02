@@ -66,7 +66,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
         >
           {/* MinAI Logo */}
           <div className="px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10">
-            <img src="/images/minai-logo.png" alt="MinAI" className="h-12 w-auto object-contain" />
+            <img src="/images/minai-logo.png" alt="MinAI" className="h-14 w-auto object-contain" />
           </div>
         </motion.div>
 
@@ -74,11 +74,11 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-36 md:w-44 flex items-center justify-center"
+          className="w-48 md:w-72 flex items-center justify-center"
         >
           {/* 100Bold Logo */}
-          <div className="px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-lg shadow-slate-500/10">
-            <img src="/images/100bold-logo.png" alt="100Bold" className="h-16 w-auto object-contain" />
+          <div className="px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10">
+            <img src="/images/100bold-logo.png" alt="100Bold" className="h-14 w-auto object-contain" />
           </div>
         </motion.div>
       </div>
