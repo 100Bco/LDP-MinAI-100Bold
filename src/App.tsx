@@ -50,21 +50,29 @@ function Home() {
 // --- Sections ---
 
 function HeroSection({ y, opacity }: { y: any, opacity: any }) {
+  const customerLogos = [
+    { src: "/images/customer-dacy.jpg", alt: "Dacy Business Park" },
+    { src: "/images/customer-lt-commercial.png", alt: "LT Commercial Group" },
+    { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
+    { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
+    { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
+    { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
+    { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
+  ];
+
   return (
     <motion.section
       style={{ y, opacity }}
-      className="relative flex flex-col items-center justify-center pt-10 pb-16 md:pt-14 md:pb-20 px-4 lg:px-12"
+      className="relative flex flex-col items-center justify-center pt-8 pb-6 md:pt-12 md:pb-10 px-4 lg:px-12"
     >
-      {/* Animated Streams into Center - REMOVED */}
-
-      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between mb-10 md:mb-12 relative z-20">
+      {/* --- Layer 1: Partner Logos --- */}
+      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center justify-center"
         >
-          {/* MinAI Logo */}
           <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10 flex items-center justify-center">
             <img src="/images/minai-logo.png" alt="MinAI" className="h-10 md:h-14 w-auto object-contain" />
           </div>
@@ -76,83 +84,61 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex items-center justify-center"
         >
-          {/* 100Bold Logo */}
           <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10 flex items-center justify-center">
             <img src="/images/100bold-logo.png" alt="100Bold" className="h-10 md:h-14 w-auto object-contain" />
           </div>
         </motion.div>
       </div>
 
-      {/* Marquee Section */}
+      {/* --- Spacer: logos → customers (32/48px) --- */}
+      <div className="h-8 md:h-12" />
+
+      {/* --- Layer 2: Social Proof --- */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="w-full max-w-7xl mx-auto mb-12 md:mb-16 relative z-20 overflow-hidden"
+        className="w-full max-w-7xl mx-auto relative z-20 overflow-hidden"
       >
-        <div className="flex justify-center mb-4 md:mb-6">
-          <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs md:text-sm uppercase tracking-widest">
+        <div className="flex justify-center mb-3 md:mb-4">
+          <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
             Our Customers
           </span>
         </div>
 
         <div className="relative w-full overflow-hidden mask-image-gradient">
           <div className="flex w-max animate-marquee items-center">
-            {/* First Set */}
-            {[
-              { src: "/images/customer-dacy.jpg", alt: "Dacy Business Park" },
-              { src: "/images/customer-lt-commercial.png", alt: "LT Commercial Group" },
-              { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
-              { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
-              { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
-              { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
-              { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
-            ].map((logo, i) => (
-              <div key={i} className="flex items-center justify-center mx-12 shrink-0">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-12 w-auto max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 cursor-default"
-                />
+            {customerLogos.map((logo, i) => (
+              <div key={i} className="flex items-center justify-center mx-8 md:mx-12 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
               </div>
             ))}
-            {/* Duplicate Set for seamless loop */}
-            {[
-              { src: "/images/customer-dacy.jpg", alt: "Dacy Business Park" },
-              { src: "/images/customer-lt-commercial.png", alt: "LT Commercial Group" },
-              { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
-              { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
-              { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
-              { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
-              { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
-            ].map((logo, i) => (
-              <div key={`dup-${i}`} className="flex items-center justify-center mx-12 shrink-0">
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  className="h-12 w-auto max-w-[140px] object-contain opacity-80 hover:opacity-100 transition-all duration-300 cursor-default"
-                />
+            {customerLogos.map((logo, i) => (
+              <div key={`dup-${i}`} className="flex items-center justify-center mx-8 md:mx-12 shrink-0">
+                <img src={logo.src} alt={logo.alt} className="h-10 md:h-12 w-auto max-w-[120px] md:max-w-[140px] object-contain opacity-60 hover:opacity-100 transition-all duration-300 cursor-default" />
               </div>
             ))}
           </div>
 
-          {/* Gradient Masks */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none" />
         </div>
       </motion.div>
 
+      {/* --- Spacer: customers → hero title (64/80px) — the hero moment needs the most air --- */}
+      <div className="h-16 md:h-20" />
+
+      {/* --- Layer 3: Hero Message (the star) --- */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.4 }}
         className="text-center max-w-5xl mx-auto relative z-20"
       >
-        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-4 md:mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-4 md:mb-5">
           <span className="block text-slate-900">INFRASTRUCTURE</span>
 
-          {/* Animated Streams Between Text */}
-          <div className="relative w-full h-[2px] my-2 md:my-4 bg-slate-100/50 overflow-hidden">
+          <div className="relative w-full h-[2px] my-2 md:my-3 bg-slate-100/50 overflow-hidden">
             <motion.div
               initial={{ left: "0%", opacity: 0 }}
               animate={{ left: "45%", opacity: [0, 1, 0] }}
@@ -171,8 +157,8 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
             FOR GROWTH
           </span>
         </h1>
-        <p className="text-base md:text-xl text-slate-500 font-light max-w-2xl mx-auto px-4">
-          AI Automation Systems <span className="text-blue-600">×</span> Brand & Content Growth
+        <p className="text-sm md:text-lg text-slate-400 font-light max-w-2xl mx-auto px-4">
+          AI Automation Systems <span className="text-blue-600/80">×</span> Brand & Content Growth
         </p>
       </motion.div>
     </motion.section>
@@ -181,7 +167,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
 
 function EcosystemSection() {
   return (
-    <section className="py-10 md:py-10 relative z-20">
+    <section className="py-12 md:py-16 relative z-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -189,7 +175,7 @@ function EcosystemSection() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-6 md:mb-8"
         >
-          <div className="inline-flex items-center justify-center px-3 py-1 mb-4 md:mb-4 rounded-full border border-slate-200 bg-slate-50 text-slate-600 text-xs md:text-sm uppercase tracking-widest">
+          <div className="inline-flex items-center justify-center px-3 py-1 mb-4 md:mb-4 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs uppercase tracking-widest">
             The Core Concept
           </div>
           <h2 className="text-2xl md:text-4xl font-display font-bold text-slate-900">
@@ -216,7 +202,7 @@ function BreakdownSection() {
   };
 
   return (
-    <section className="py-6 md:py-8 relative z-20">
+    <section className="pb-12 md:pb-16 relative z-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
@@ -307,7 +293,7 @@ function BreakdownSection() {
 
 function FiguresSection() {
   return (
-    <section className="py-10 md:py-14 relative z-20 border-y border-slate-100 mt-6 md:mt-8 bg-slate-50/50">
+    <section className="py-12 md:py-16 relative z-20 border-y border-slate-100 bg-slate-50/50">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 divide-x divide-slate-200/50 md:divide-x-0">
 
@@ -377,7 +363,7 @@ function VideoShowcaseSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8 md:mb-10"
+          className="text-center mb-8 md:mb-12"
         >
           <h2 className="text-2xl md:text-4xl font-display font-bold mb-2 md:mb-3 text-slate-900">See The Engines At Work</h2>
           <p className="text-slate-500 text-sm md:text-lg">Watch how top operators utilize our systems.</p>
