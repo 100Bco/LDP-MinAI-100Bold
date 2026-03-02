@@ -57,16 +57,16 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
     >
       {/* Animated Streams into Center - REMOVED */}
 
-      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mb-8 md:mb-8 relative z-20 gap-6 md:gap-0">
+      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between mb-8 md:mb-8 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-48 md:w-72 flex items-center justify-center"
+          className="flex items-center justify-center"
         >
           {/* MinAI Logo */}
-          <div className="w-44 md:w-56 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10 flex items-center justify-center">
-            <img src="/images/minai-logo.png" alt="MinAI" className="h-14 w-auto object-contain" />
+          <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-blue-100 shadow-lg shadow-blue-500/10 flex items-center justify-center">
+            <img src="/images/minai-logo.png" alt="MinAI" className="h-10 md:h-14 w-auto object-contain" />
           </div>
         </motion.div>
 
@@ -74,11 +74,11 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-48 md:w-72 flex items-center justify-center"
+          className="flex items-center justify-center"
         >
           {/* 100Bold Logo */}
-          <div className="w-44 md:w-56 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10 flex items-center justify-center">
-            <img src="/images/100bold-logo.png" alt="100Bold" className="h-14 w-auto object-contain" />
+          <div className="w-36 md:w-56 px-3 py-2 md:px-4 md:py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-red-100 shadow-lg shadow-red-500/10 flex items-center justify-center">
+            <img src="/images/100bold-logo.png" alt="100Bold" className="h-10 md:h-14 w-auto object-contain" />
           </div>
         </motion.div>
       </div>
@@ -425,7 +425,7 @@ function VideoShowcaseSection() {
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">100Bold Content Examples</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+            <div className="grid grid-cols-3 gap-2 md:gap-8">
               {[1, 2, 3].map((i) => (
                 <motion.div
                   key={i}
@@ -438,16 +438,16 @@ function VideoShowcaseSection() {
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite_reverse]" />
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-red-500/5 transition-opacity duration-500" />
 
-                  <div className="relative z-10 w-16 h-16 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center backdrop-blur-sm group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-500 group-hover:scale-110 shadow-lg">
-                    <Play className="w-6 h-6 text-slate-600 ml-1 group-hover:text-white transition-colors" />
+                  <div className="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center backdrop-blur-sm group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-500 group-hover:scale-110 shadow-lg">
+                    <Play className="w-4 h-4 md:w-6 md:h-6 text-slate-600 ml-0.5 group-hover:text-white transition-colors" />
                   </div>
 
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="h-2 w-2/3 bg-slate-200 rounded-full mb-2" />
-                    <div className="h-2 w-1/2 bg-slate-100 rounded-full" />
+                  <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6">
+                    <div className="h-1.5 md:h-2 w-2/3 bg-slate-200 rounded-full mb-1 md:mb-2" />
+                    <div className="h-1.5 md:h-2 w-1/2 bg-slate-100 rounded-full" />
                   </div>
 
-                  <div className="absolute top-4 right-4 px-2 py-1 bg-red-50 text-red-600 border border-red-100 text-[10px] font-bold uppercase tracking-wider rounded">
+                  <div className="absolute top-2 right-2 md:top-4 md:right-4 px-1.5 py-0.5 md:px-2 md:py-1 bg-red-50 text-red-600 border border-red-100 text-[8px] md:text-[10px] font-bold uppercase tracking-wider rounded">
                     Example {i}
                   </div>
                 </motion.div>
