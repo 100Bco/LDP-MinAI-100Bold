@@ -90,7 +90,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="w-full max-w-7xl mx-auto mb-16 relative z-20 overflow-hidden"
       >
-        <p className="text-center text-slate-400 text-xs font-bold uppercase tracking-[0.2em] mb-8">
+        <p className="text-center text-slate-500 text-lg md:text-2xl font-bold mb-8">
           OUR CUSTOMERS
         </p>
 
