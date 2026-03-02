@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  Cpu, Activity, Zap,
-  Video, TrendingUp, Radio,
+  Activity, Zap,
+  TrendingUp, Radio,
   Play, ArrowRight, CheckCircle2, ChevronRight
 } from "lucide-react";
 import { useCreateLead } from "./hooks/use-leads";
@@ -249,7 +249,7 @@ function BreakdownSection() {
 
             <div className="relative z-10">
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-50 flex items-center justify-center mb-4 md:mb-6 border border-blue-100 group-hover:scale-110 transition-transform duration-500">
-                <Cpu className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
+                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
               </div>
 
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">MINAI</h2>
@@ -291,7 +291,7 @@ function BreakdownSection() {
 
             <div className="relative z-10">
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-red-50 flex items-center justify-center mb-4 md:mb-6 border border-red-100 group-hover:scale-110 transition-transform duration-500">
-                <Video className="w-6 h-6 md:w-7 md:h-7 text-red-600" />
+                <img src="/images/Icon 2.png" alt="100Bold Icon" className="w-8 h-8 md:w-10 md:h-10 object-contain" />
               </div>
 
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">100BOLD</h2>
@@ -419,7 +419,7 @@ function VideoShowcaseSection() {
           <div>
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
               <div className="p-1.5 md:p-2 bg-blue-50 rounded-lg border border-blue-100">
-                <Cpu className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
+                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
               </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">MinAI System Demo</h3>
             </div>
@@ -445,7 +445,7 @@ function VideoShowcaseSection() {
               </div>
 
               <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-lg border border-slate-200 text-sm font-semibold tracking-wider flex items-center gap-2 text-blue-600 shadow-sm">
-                <Cpu className="w-4 h-4" /> System Walkthrough
+                <img src="/images/Icon 1.png" alt="MinAI Icon" className="w-4 h-4 object-contain" /> System Walkthrough
               </div>
             </motion.div>
           </div>
@@ -454,7 +454,7 @@ function VideoShowcaseSection() {
           <div>
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
               <div className="p-1.5 md:p-2 bg-red-50 rounded-lg border border-red-100">
-                <Video className="w-5 h-5 md:w-6 md:h-6 text-red-600" />
+                <img src="/images/Icon 2.png" alt="100Bold Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
               </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">100Bold Content Examples</h3>
             </div>
