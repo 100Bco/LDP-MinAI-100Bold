@@ -272,7 +272,7 @@ function BreakdownSection() {
               {/* --- END NEW HEADER --- */}
 
               <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8 border-l-2 border-blue-200 pl-4">
-                Done-For-You AI Systems That Close Deals
+                The machine automates your business.
               </p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
