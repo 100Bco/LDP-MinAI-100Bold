@@ -63,7 +63,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
   return (
     <motion.section
       style={{ y, opacity }}
-      className="relative flex flex-col items-center justify-center pt-8 pb-6 md:pt-12 md:pb-10 px-4 lg:px-12"
+      className="relative flex flex-col items-center justify-center min-h-screen px-4 lg:px-12 py-12 md:py-16"
     >
       {/* --- Layer 1: Partner Logos --- */}
       <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between relative z-20">
@@ -167,7 +167,7 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
 
 function EcosystemSection() {
   return (
-    <section className="hidden md:block py-12 md:py-16 relative z-20">
+    <section className="py-12 md:py-16 relative z-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
