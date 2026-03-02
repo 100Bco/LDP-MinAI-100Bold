@@ -267,7 +267,6 @@ function BreakdownSection() {
               </div>
               {/* --- END NEW HEADER --- */}
               
-              {/* === CHANGE #1: Bỏ border và padding, thay đổi slogan === */}
               <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8">
                 Your 24/7 Growth Engine.
               </p>
@@ -325,7 +324,6 @@ function BreakdownSection() {
               </div>
               {/* --- END NEW HEADER --- */}
               
-              {/* === CHANGE #2: Bỏ border và padding === */}
               <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-8">
                 Start Brave. Stay Bold.
               </p>
@@ -430,6 +428,9 @@ function FiguresSection() {
   );
 }
 
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (START) =================================
+// ========================================================================
 function VideoShowcaseSection() {
   const isMobile = useIsMobile();
   return (
@@ -451,10 +452,8 @@ function VideoShowcaseSection() {
 
           {/* MinAI Demo */}
           <div>
+            {/* === CHANGE #1: Bỏ thẻ div chứa icon đi === */}
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
-              <div className="p-1.5 md:p-2 bg-blue-50 rounded-lg border border-blue-100">
-                <img src="/images/Icon%201.png" alt="MinAI Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
-              </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">MinAI System Demo</h3>
             </div>
 
@@ -486,10 +485,8 @@ function VideoShowcaseSection() {
 
           {/* 100Bold Demos */}
           <div>
+             {/* === CHANGE #2: Bỏ thẻ div chứa icon đi === */}
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
-              <div className="p-1.5 md:p-2 bg-red-50 rounded-lg border border-red-100">
-                <img src="/images/Icon%202.png" alt="100Bold Icon" className="w-6 h-6 md:w-8 md:h-8 object-contain" />
-              </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">100Bold Content Examples</h3>
             </div>
 
@@ -530,6 +527,10 @@ function VideoShowcaseSection() {
     </section>
   );
 }
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (END) ===================================
+// ========================================================================
+
 
 // Separate component to keep Lucide imports clean and avoid inline complex icons
 function FlameIcon(props: any) {
