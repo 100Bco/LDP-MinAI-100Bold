@@ -62,7 +62,7 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
       { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
       { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
       { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
-      { src: "/images/customer-miami-vice.png", alt: "Miami Vice" },
+      { src: "/images/Logo Miami Vice.png", alt: "Miami Vice" },
     ];
 
     return (
