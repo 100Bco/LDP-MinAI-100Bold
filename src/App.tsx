@@ -103,6 +103,8 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
               { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
               { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
               { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
+              { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
+              { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
             ].map((logo, i) => (
               <div key={i} className="flex items-center justify-center mx-12 shrink-0">
                 <img
@@ -119,6 +121,8 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
               { src: "/images/customer-dang-law.png", alt: "Dang Law Group" },
               { src: "/images/customer-t98.png", alt: "T98 Rehab & Chiropractic" },
               { src: "/images/customer-bee-construction.jpg", alt: "Bee Construction Inc" },
+              { src: "/images/100B - TACH NEN -2 (1).png", alt: "100B" },
+              { src: "/images/areaa_AUSTIN2025-03.png", alt: "Austin AREAA" },
             ].map((logo, i) => (
               <div key={`dup-${i}`} className="flex items-center justify-center mx-12 shrink-0">
                 <img
