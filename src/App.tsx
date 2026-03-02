@@ -53,11 +53,11 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
   return (
     <motion.section
       style={{ y, opacity }}
-      className="relative flex flex-col items-center justify-center pt-10 pb-12 md:pt-14 md:pb-16 px-4 lg:px-12"
+      className="relative flex flex-col items-center justify-center pt-10 pb-16 md:pt-14 md:pb-20 px-4 lg:px-12"
     >
       {/* Animated Streams into Center - REMOVED */}
 
-      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between mb-8 md:mb-8 relative z-20">
+      <div className="w-full max-w-7xl mx-auto flex flex-row items-center justify-between mb-10 md:mb-12 relative z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -88,11 +88,13 @@ function HeroSection({ y, opacity }: { y: any, opacity: any }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="w-full max-w-7xl mx-auto mb-8 md:mb-10 relative z-20 overflow-hidden"
+        className="w-full max-w-7xl mx-auto mb-12 md:mb-16 relative z-20 overflow-hidden"
       >
-        <p className="text-center text-slate-500 text-lg md:text-xl font-bold mb-4 md:mb-6">
-          OUR CUSTOMERS
-        </p>
+        <div className="flex justify-center mb-4 md:mb-6">
+          <span className="inline-flex items-center justify-center px-3 py-1 rounded-full border border-slate-200 bg-slate-50 text-slate-400 text-xs md:text-sm uppercase tracking-widest">
+            Our Customers
+          </span>
+        </div>
 
         <div className="relative w-full overflow-hidden mask-image-gradient">
           <div className="flex w-max animate-marquee items-center">
