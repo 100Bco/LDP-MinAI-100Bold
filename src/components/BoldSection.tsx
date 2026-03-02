@@ -22,7 +22,7 @@ export default function BoldSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 mb-6 shadow-sm">
             {/* --- THAY ĐỔI Ở ĐÂY: Dùng thẻ img thay cho icon Zap --- */}
             <img 
-              src="/images/Icon 2.png" 
+              src="/images/Icon%202.png" 
               alt="100Bold Brand" 
               className="w-5 h-5 object-contain"
             />
