@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 import {
-  Cpu, Activity, Zap,
-  Video, TrendingUp, Radio,
+  Activity, Zap,
+  TrendingUp, Radio,
   Play, ArrowRight, CheckCircle2, ChevronRight
 } from "lucide-react";
 import { useCreateLead } from "./hooks/use-leads";
@@ -11,9 +11,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Disable scroll-triggered animations on mobile to reduce jank
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(
-    () => window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
+    () => typeof window !== 'undefined' && window.matchMedia(`(max-width: ${breakpoint - 1}px)`).matches
   );
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
     const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
     mql.addEventListener("change", handler);
@@ -178,7 +179,7 @@ const HeroSection = React.forwardRef<HTMLElement, { y: any; opacity: any }>(
             </span>
           </h1>
           <p className="text-base md:text-lg text-slate-400 font-light max-w-2xl mx-auto px-4">
-            AI Automation Systems <span className="text-blue-600/80">×</span> Brand & Content Growth
+            Automation System <span className="text-blue-600/80">×</span> Branding Solution
           </p>
         </motion.div>
 
@@ -234,7 +235,7 @@ function BreakdownSection() {
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
-          {/* MinAI Block */}
+          {/* --- MinAI Block --- */}
           <motion.div
             {...(!isMobile && {
               initial: { opacity: 0, x: -30 },
@@ -244,12 +245,25 @@ function BreakdownSection() {
             })}
             className="group bg-white border border-slate-200 rounded-2xl md:rounded-3xl p-5 md:p-8 relative overflow-hidden transition-all duration-500 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5"
           >
-            {/* Visual background */}
+            {/* Visual background pattern */}
             <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CgkJPHBhdGggZD0iTTAgMGwyMCAyME0yMCAwbC0yMCAyMCIgc3Ryb2tlPSIjMjU2M0VCIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-blue-50 flex items-center justify-center mb-4 md:mb-6 border border-blue-100 group-hover:scale-110 transition-transform duration-500">
-                <Cpu className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
+              {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
+              <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
+                {/* Icon to hơn, bỏ viền, bỏ nền */}
+                <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
+                  <img 
+                    src="/images/Icon%201.png" 
+                    alt="MinAI Icon" 
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  />
+                </div>
+                
+                {/* Title nằm bên cạnh */}
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                  MINAI
+                </h2>
               </div>
 
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
@@ -277,7 +291,7 @@ function BreakdownSection() {
             </div>
           </motion.div>
 
-          {/* 100BOLD Block */}
+          {/* --- 100BOLD Block --- */}
           <motion.div
             {...(!isMobile && {
               initial: { opacity: 0, x: 30 },
@@ -292,8 +306,21 @@ function BreakdownSection() {
             <div className="absolute right-0 top-0 w-64 h-64 bg-red-600/5 blur-[80px] pointer-events-none" />
 
             <div className="relative z-10">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-red-50 flex items-center justify-center mb-4 md:mb-6 border border-red-100 group-hover:scale-110 transition-transform duration-500">
-                <Video className="w-6 h-6 md:w-7 md:h-7 text-red-600" />
+               {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
+               <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
+                {/* Icon to hơn, bỏ viền, bỏ nền */}
+                <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
+                  <img 
+                    src="/images/Icon%202.png" 
+                    alt="100Bold Icon" 
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  />
+                </div>
+                
+                {/* Title nằm bên cạnh */}
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                  100BOLD
+                </h2>
               </div>
 
               <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
@@ -326,6 +353,7 @@ function BreakdownSection() {
     </section>
   );
 }
+
 
 function FiguresSection() {
   const isMobile = useIsMobile();
@@ -361,7 +389,7 @@ function FiguresSection() {
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-blue-600 mb-2">10+</h4>
             <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Industries Served</p>
-            <p className="text-slate-500 text-[10px] md:text-sm leading-tight">Real Estate, Brokerages, Local Service, Law Firms...</p>
+            <p className="text-slate-500 text-[10px] md:text-sm leading-tight">Real Estate, Construction, Local Service, Law Firms,...</p>
           </motion.div>
 
           {/* 100Bold Stat 1 */}
@@ -389,8 +417,8 @@ function FiguresSection() {
             })}
             className="text-center px-2 md:px-4"
           >
-            <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">8-9</h4>
-            <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Figure Revenue</p>
+            <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">30%+</h4>
+            <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Annual Growth</p>
             <p className="text-slate-500 text-[10px] md:text-sm leading-tight">We think like business owners, not vendors</p>
           </motion.div>
 
@@ -400,6 +428,9 @@ function FiguresSection() {
   );
 }
 
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (START) =================================
+// ========================================================================
 function VideoShowcaseSection() {
   const isMobile = useIsMobile();
   return (
@@ -421,10 +452,8 @@ function VideoShowcaseSection() {
 
           {/* MinAI Demo */}
           <div>
+            {/* === CHANGE #1: Bỏ thẻ div chứa icon đi === */}
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
-              <div className="p-1.5 md:p-2 bg-blue-50 rounded-lg border border-blue-100">
-                <Cpu className="w-5 h-5 md:w-6 md:h-6 text-blue-600" />
-              </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">MinAI System Demo</h3>
             </div>
 
@@ -448,10 +477,8 @@ function VideoShowcaseSection() {
 
           {/* 100Bold Demos */}
           <div>
+             {/* === CHANGE #2: Bỏ thẻ div chứa icon đi === */}
             <div className="flex items-center gap-3 mb-4 md:mb-6 justify-center md:justify-start">
-              <div className="p-1.5 md:p-2 bg-red-50 rounded-lg border border-red-100">
-                <Video className="w-5 h-5 md:w-6 md:h-6 text-red-600" />
-              </div>
               <h3 className="text-xl md:text-2xl font-display font-bold text-slate-900">100Bold Content Examples</h3>
             </div>
 
@@ -490,6 +517,10 @@ function VideoShowcaseSection() {
     </section>
   );
 }
+// ========================================================================
+// === SECTION ĐÃ ĐƯỢC CẬP NHẬT (END) ===================================
+// ========================================================================
+
 
 // Separate component to keep Lucide imports clean and avoid inline complex icons
 function FlameIcon(props: any) {

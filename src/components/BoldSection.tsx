@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+// Vẫn giữ "Zap" ở đây vì nó được dùng trong phần Key Figures bên dưới
 import { Zap, Users, ShieldCheck, ArrowRight, Play } from 'lucide-react';
 
 export default function BoldSection() {
@@ -19,7 +20,12 @@ export default function BoldSection() {
           className="max-w-4xl mx-auto text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 border border-red-100 mb-6 shadow-sm">
-            <Zap className="w-4 h-4 text-bold-red" />
+            {/* --- THAY ĐỔI Ở ĐÂY: Dùng thẻ img thay cho icon Zap --- */}
+            <img 
+              src="/images/Icon%202.png" 
+              alt="100Bold Brand" 
+              className="w-5 h-5 object-contain"
+            />
             <span className="text-bold-red text-sm font-medium tracking-wide uppercase">The Brand</span>
           </div>
           
@@ -37,6 +43,7 @@ export default function BoldSection() {
           {[
             { icon: Users, label: "Partner Companies", value: "25+", sub: "Trusted by industry leaders" },
             { icon: ShieldCheck, label: "Revenue Generated", value: "8-9 Figure", sub: "Combined client value" },
+            // Icon Zap vẫn được sử dụng ở đây
             { icon: Zap, label: "Experience", value: "100+", sub: "Headcount managed" },
           ].map((stat, index) => (
             <motion.div
