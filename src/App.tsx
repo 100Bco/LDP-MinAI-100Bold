@@ -434,23 +434,15 @@ function VideoShowcaseSection() {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
               })}
-              className="group relative aspect-video bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10"
+              className="relative aspect-video bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden hover:border-blue-300 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500"
             >
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite]" />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-blue-500/5 transition-opacity duration-500" />
-
-              <div className="relative z-10 w-24 h-24 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center backdrop-blur-sm group-hover:bg-blue-600 group-hover:border-blue-600 transition-all duration-500 group-hover:scale-110 shadow-lg">
-                <Play className="w-10 h-10 text-slate-600 ml-1 group-hover:text-white transition-colors" />
-              </div>
-
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="h-3 w-1/3 bg-slate-200 rounded-full mb-4" />
-                <div className="h-3 w-1/4 bg-slate-100 rounded-full" />
-              </div>
-
-              <div className="absolute top-6 left-6 px-4 py-2 bg-white/90 backdrop-blur-md rounded-lg border border-slate-200 text-sm font-semibold tracking-wider flex items-center gap-2 text-blue-600 shadow-sm">
-                <Cpu className="w-4 h-4" /> System Walkthrough
-              </div>
+              <iframe
+                src="https://drive.google.com/file/d/1UqAtNkMNQ94rE2JwkrEy9MOWDD2guL88/preview"
+                className="absolute inset-0 w-full h-full"
+                style={{ border: "none" }}
+                allow="autoplay"
+                allowFullScreen={true}
+              />
             </motion.div>
           </div>
 
