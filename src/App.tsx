@@ -268,7 +268,7 @@ function BreakdownSection() {
               {/* --- END NEW HEADER --- */}
               
               <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-8">
-                Your 24/7 Growth Engine.
+                One platform replaces 2-5 full time employees.
               </p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
@@ -389,7 +389,7 @@ function FiguresSection() {
           >
             <h4 className="text-3xl md:text-4xl font-display font-bold text-blue-600 mb-2">10+</h4>
             <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Industries Served</p>
-            <p className="text-slate-500 text-[10px] md:text-sm leading-tight">Real Estate, Brokerages, Local Service, Law Firms...</p>
+            <p className="text-slate-500 text-[10px] md:text-sm leading-tight">Real Estate, Construction, Local Service, Law Firms,...</p>
           </motion.div>
 
           {/* 100Bold Stat 1 */}
@@ -417,8 +417,8 @@ function FiguresSection() {
             })}
             className="text-center px-2 md:px-4"
           >
-            <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">8-9</h4>
-            <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Figure Revenue</p>
+            <h4 className="text-3xl md:text-4xl font-display font-bold text-red-600 mb-2">30%+</h4>
+            <p className="font-bold text-slate-900 uppercase tracking-wide mb-1 text-xs md:text-base">Annual Growth</p>
             <p className="text-slate-500 text-[10px] md:text-sm leading-tight">We think like business owners, not vendors</p>
           </motion.div>
 
