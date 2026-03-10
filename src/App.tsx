@@ -252,7 +252,9 @@ function BreakdownSection() {
                 <Cpu className="w-6 h-6 md:w-7 md:h-7 text-blue-600" />
               </div>
 
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">MINAI</h2>
+              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
+                <a href="https://www.minai.biz/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors duration-300">MINAI</a>
+              </h2>
               <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-6">Done-For-You AI Systems That Close Deals</p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
@@ -294,7 +296,9 @@ function BreakdownSection() {
                 <Video className="w-6 h-6 md:w-7 md:h-7 text-red-600" />
               </div>
 
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">100BOLD</h2>
+              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
+                <a href="https://www.100bold.co/" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors duration-300">100BOLD</a>
+              </h2>
               <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-6">Start Brave. Stay Bold.</p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
@@ -460,7 +464,11 @@ function VideoShowcaseSection() {
             </div>
 
             <div className="grid grid-cols-3 gap-2 md:gap-8">
-              {[1, 2, 3].map((i) => (
+              {[
+                "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F887183647434294&show_text=false",
+                "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1568218024450181&show_text=false",
+                "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1587537409327128&show_text=false",
+              ].map((src, i) => (
                 <motion.div
                   key={i}
                   {...(!isMobile && {
@@ -469,23 +477,17 @@ function VideoShowcaseSection() {
                     viewport: { once: true },
                     transition: { delay: i * 0.1 },
                   })}
-                  className="group relative aspect-[9/16] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden cursor-pointer flex items-center justify-center transition-all duration-500 hover:border-red-300 hover:shadow-xl hover:shadow-red-500/10"
+                  className="group relative aspect-[9/16] bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden transition-all duration-500 hover:border-red-300 hover:shadow-xl hover:shadow-red-500/10"
                 >
-                  <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.02)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%,100%_100%] animate-[shimmer_3s_infinite_reverse]" />
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-red-500/5 transition-opacity duration-500" />
-
-                  <div className="relative z-10 w-10 h-10 md:w-16 md:h-16 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center backdrop-blur-sm group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-500 group-hover:scale-110 shadow-lg">
-                    <Play className="w-4 h-4 md:w-6 md:h-6 text-slate-600 ml-0.5 group-hover:text-white transition-colors" />
-                  </div>
-
-                  <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6">
-                    <div className="h-1.5 md:h-2 w-2/3 bg-slate-200 rounded-full mb-1 md:mb-2" />
-                    <div className="h-1.5 md:h-2 w-1/2 bg-slate-100 rounded-full" />
-                  </div>
-
-                  <div className="absolute top-2 right-2 md:top-4 md:right-4 px-1.5 py-0.5 md:px-2 md:py-1 bg-red-50 text-red-600 border border-red-100 text-[8px] md:text-[10px] font-bold uppercase tracking-wider rounded">
-                    Example {i}
-                  </div>
+                  <iframe
+                    src={src}
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: "none", overflow: "hidden" }}
+                    scrolling="no"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  />
                 </motion.div>
               ))}
             </div>
@@ -592,7 +594,7 @@ function CtaSection() {
 
           <div className="mt-12 md:mt-14 pt-6 md:pt-6 border-t border-slate-100">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
-              Built for Operators. Designed for Growth.
+              Built for Operators.<br />Designed for Growth.
             </p>
           </div>
         </motion.div>
