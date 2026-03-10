@@ -3,11 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   Activity, Zap,
   TrendingUp, Radio,
-  Play, ArrowRight, CheckCircle2, ChevronRight
+  Play, ArrowRight, CheckCircle2
 } from "lucide-react";
-import { useCreateLead } from "./hooks/use-leads";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 // Disable scroll-triggered animations on mobile to reduce jank
 function useIsMobile(breakpoint = 768) {
   const [isMobile, setIsMobile] = useState(
@@ -23,15 +20,8 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-// Create a client
-const queryClient = new QueryClient();
-
 export default function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Home />
-    </QueryClientProvider>
-  );
+  return <Home />;
 }
 
 function Home() {
@@ -249,27 +239,19 @@ function BreakdownSection() {
             <div className="absolute inset-0 opacity-5 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CgkJPHBhdGggZD0iTTAgMGwyMCAyME0yMCAwbC0yMCAyMCIgc3Ryb2tlPSIjMjU2M0VCIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC41Ii8+Cjwvc3ZnPg==')] [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
             <div className="relative z-10">
-              {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
-              <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
-                {/* Icon to hơn, bỏ viền, bỏ nền */}
+              <a href="https://www.minai.biz/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6 group/link">
                 <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
-                  <img 
-                    src="/images/Icon%201.png" 
-                    alt="MinAI Icon" 
-                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  <img
+                    src="/images/Icon%201.png"
+                    alt="MinAI Icon"
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg"
                   />
                 </div>
-                
-                {/* Title nằm bên cạnh */}
-                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight group-hover/link:text-blue-600 transition-colors duration-300">
                   MINAI
                 </h2>
-              </div>
-
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
-                <a href="https://www.minai.biz/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors duration-300">MINAI</a>
-              </h2>
-              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-6">Done-For-You AI Systems That Close Deals</p>
+              </a>
+              <p className="text-base md:text-lg text-blue-600 font-medium mb-6 md:mb-6">One Platform Replaces 2-5 Full Time Employees</p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
                 {[
@@ -306,26 +288,18 @@ function BreakdownSection() {
             <div className="absolute right-0 top-0 w-64 h-64 bg-red-600/5 blur-[80px] pointer-events-none" />
 
             <div className="relative z-10">
-               {/* --- NEW HEADER LAYOUT: ICON + TITLE SIDE BY SIDE --- */}
-               <div className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6">
-                {/* Icon to hơn, bỏ viền, bỏ nền */}
+              <a href="https://www.100bold.co/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 md:gap-5 mb-4 md:mb-6 group/link">
                 <div className="shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
-                  <img 
-                    src="/images/Icon%202.png" 
-                    alt="100Bold Icon" 
-                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg" 
+                  <img
+                    src="/images/Icon%202.png"
+                    alt="100Bold Icon"
+                    className="w-14 h-14 md:w-20 md:h-20 object-contain drop-shadow-lg"
                   />
                 </div>
-                
-                {/* Title nằm bên cạnh */}
-                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight">
+                <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 tracking-tight group-hover/link:text-red-600 transition-colors duration-300">
                   100BOLD
                 </h2>
-              </div>
-
-              <h2 className="text-2xl md:text-4xl font-display font-bold mb-1 md:mb-2 text-slate-900">
-                <a href="https://www.100bold.co/" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors duration-300">100BOLD</a>
-              </h2>
+              </a>
               <p className="text-base md:text-lg text-red-600 font-medium mb-6 md:mb-6">Start Brave. Stay Bold.</p>
 
               <motion.div {...(!isMobile && { variants: containerVariants, initial: "hidden", whileInView: "visible", viewport: { once: true } })} className="space-y-4 md:space-y-6">
@@ -534,23 +508,17 @@ function FlameIcon(props: any) {
 
 function CtaSection() {
   const isMobile = useIsMobile();
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const createLead = useCreateLead();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const handleSubscribe = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setStatus("loading");
-    try {
-      await createLead.mutateAsync({ email });
-      setStatus("success");
-      setEmail("");
-    } catch (err) {
-      setStatus("error");
-    }
-  };
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://link.minai.biz/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className="py-16 md:py-20 relative z-20 bg-white border-t border-slate-100 overflow-hidden">
@@ -568,28 +536,26 @@ function CtaSection() {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-2 md:mb-3 text-slate-900">Choose Your Engine.</h2>
           <p className="text-lg md:text-xl text-slate-500 mb-8 md:mb-8 font-light">Or combine both.</p>
 
-          <form onSubmit={handleSubscribe} className="max-w-md mx-auto mb-10 md:mb-10 relative">
-            <div className="relative flex items-center bg-slate-50 border border-slate-200 p-1 rounded-full focus-within:border-blue-300 focus-within:ring-4 focus-within:ring-blue-500/5 transition-all duration-300">
-              <input
-                type="email"
-                placeholder="Enter email for ecosystem insights..."
-                className="w-full bg-transparent border-none outline-none px-6 py-3 text-sm md:text-base text-slate-900 placeholder:text-slate-400"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={status === "loading" || status === "success"}
-              />
-              <button
-                type="submit"
-                disabled={status === "loading" || status === "success"}
-                className="bg-slate-900 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-slate-800 active:scale-95 transition-all disabled:opacity-50 whitespace-nowrap flex items-center gap-2"
-              >
-                {status === "loading" ? "Sending..." :
-                  status === "success" ? "Subscribed!" : "Join List"}
-                {status !== "loading" && status !== "success" && <ChevronRight className="w-4 h-4" />}
-              </button>
-            </div>
-            {status === "error" && <p className="text-red-500 text-xs mt-2 absolute -bottom-6 w-full text-center">Failed to subscribe. Please try again.</p>}
-          </form>
+          <div className="max-w-2xl mx-auto mb-10 md:mb-10">
+            <iframe
+              ref={iframeRef}
+              src="https://link.minai.biz/widget/form/96obFrS0YxzxEbNilakz"
+              style={{ width: "100%", height: "1326px", border: "none", borderRadius: "4px" }}
+              id="inline-96obFrS0YxzxEbNilakz"
+              data-layout='{"id":"INLINE"}'
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Landingpage Registration"
+              data-height="1326"
+              data-layout-iframe-id="inline-96obFrS0YxzxEbNilakz"
+              data-form-id="96obFrS0YxzxEbNilakz"
+              title="Landingpage Registration"
+            />
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <a
