@@ -521,7 +521,7 @@ function CtaSection() {
   }, []);
 
   return (
-    <section className="py-16 md:py-20 relative z-20 bg-white border-t border-slate-100 overflow-hidden">
+    <section className="py-10 md:py-14 relative z-20 bg-white border-t border-slate-100 overflow-hidden">
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
 
@@ -533,14 +533,14 @@ function CtaSection() {
             viewport: { once: true },
           })}
         >
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-2 md:mb-3 text-slate-900">Choose Your Engine.</h2>
-          <p className="text-lg md:text-xl text-slate-500 mb-8 md:mb-8 font-light">Or combine both.</p>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-1 md:mb-2 text-slate-900">Choose Your Engine.</h2>
+          <p className="text-lg md:text-xl text-slate-500 mb-6 font-light">Or combine both.</p>
 
-          <div className="max-w-2xl mx-auto mb-10 md:mb-10">
+          <div className="max-w-2xl mx-auto mb-6">
             <iframe
               ref={iframeRef}
               src="https://link.minai.biz/widget/form/96obFrS0YxzxEbNilakz"
-              style={{ width: "100%", height: "1326px", border: "none", borderRadius: "4px" }}
+              style={{ width: "100%", height: "700px", border: "none", borderRadius: "4px" }}
               id="inline-96obFrS0YxzxEbNilakz"
               data-layout='{"id":"INLINE"}'
               data-trigger-type="alwaysShow"
@@ -550,7 +550,7 @@ function CtaSection() {
               data-deactivation-type="neverDeactivate"
               data-deactivation-value=""
               data-form-name="Landingpage Registration"
-              data-height="1326"
+              data-height="700"
               data-layout-iframe-id="inline-96obFrS0YxzxEbNilakz"
               data-form-id="96obFrS0YxzxEbNilakz"
               title="Landingpage Registration"
@@ -581,7 +581,7 @@ function CtaSection() {
             </a>
           </div>
 
-          <div className="mt-12 md:mt-14 pt-6 md:pt-6 border-t border-slate-100">
+          <div className="mt-8 md:mt-10 pt-4 md:pt-5 border-t border-slate-100">
             <p className="text-xs uppercase tracking-[0.2em] text-slate-300">
               Built for Operators.<br />Designed for Growth.
             </p>
