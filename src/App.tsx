@@ -525,6 +525,16 @@ function CtaSection() {
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none" />
 
+      <div className="max-w-6xl mx-auto px-4 mb-8 relative z-10">
+        <iframe
+          src="https://link.minai.biz/widget/booking/oPdza9BB7isKUhMkkyw2"
+          style={{ width: "100%", minHeight: "600px", border: "none", overflow: "hidden" }}
+          scrolling="no"
+          id="oPdza9BB7isKUhMkkyw2_1774515592437"
+          title="Book a Meeting"
+        />
+      </div>
+
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <motion.div
           {...(!isMobile && {
@@ -535,16 +545,6 @@ function CtaSection() {
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-1 md:mb-2 text-slate-900">Choose Your Engine.</h2>
           <p className="text-lg md:text-xl text-slate-500 mb-6 font-light">Or combine both.</p>
-
-          <div className="max-w-2xl md:max-w-6xl md:relative md:left-1/2 md:-translate-x-1/2 mx-auto mb-8">
-            <iframe
-              src="https://link.minai.biz/widget/booking/oPdza9BB7isKUhMkkyw2"
-              style={{ width: "100%", minHeight: "600px", border: "none", overflow: "hidden" }}
-              scrolling="no"
-              id="oPdza9BB7isKUhMkkyw2_1774515592437"
-              title="Book a Meeting"
-            />
-          </div>
 
           <div className="max-w-2xl mx-auto mb-6">
             <iframe
