@@ -536,6 +536,16 @@ function CtaSection() {
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-1 md:mb-2 text-slate-900">Choose Your Engine.</h2>
           <p className="text-lg md:text-xl text-slate-500 mb-6 font-light">Or combine both.</p>
 
+          <div className="max-w-2xl mx-auto mb-8">
+            <iframe
+              src="https://link.minai.biz/widget/booking/oPdza9BB7isKUhMkkyw2"
+              style={{ width: "100%", border: "none", overflow: "hidden" }}
+              scrolling="no"
+              id="oPdza9BB7isKUhMkkyw2_1774515592437"
+              title="Book a Meeting"
+            />
+          </div>
+
           <div className="max-w-2xl mx-auto mb-6">
             <iframe
               ref={iframeRef}
